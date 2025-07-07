@@ -97,7 +97,11 @@ class Post {
           json['created_at'] != null
               ? DateTime.parse(json['created_at'])
               : DateTime.now(),
-      isProduct: (json['is_product'] == true || json['is_product'] == 1 || json['is_product'] == 't' || json['is_product'] == 'true'),
+      isProduct:
+          (json['is_product'] == true ||
+              json['is_product'] == 1 ||
+              json['is_product'] == 't' ||
+              json['is_product'] == 'true'),
       productname: json['productname']?.toString(),
       variation: json['variation']?.toString(),
       quantity: json['quantity'] is int ? json['quantity'] : null,
@@ -538,12 +542,10 @@ class SupabaseService {
             .select('post_id')
             .eq('user_id', currentUser.id);
 
-        if (likedPostsResponse != null) {
-          likedPostIds =
-              likedPostsResponse
-                  .map<String>((data) => data['post_id'] as String)
-                  .toSet();
-        }
+        likedPostIds =
+            likedPostsResponse
+                .map<String>((data) => data['post_id'] as String)
+                .toSet();
 
         // Get user's pinned posts
         final userBoardsResponse = await supabase
@@ -551,7 +553,7 @@ class SupabaseService {
             .select('id')
             .eq('user_id', currentUser.id);
 
-        if (userBoardsResponse != null && userBoardsResponse.isNotEmpty) {
+        if (userBoardsResponse.isNotEmpty) {
           final List<String> boardIds =
               userBoardsResponse
                   .map<String>((board) => board['id'] as String)
@@ -562,12 +564,10 @@ class SupabaseService {
               .select('post_id')
               .inFilter('board_id', boardIds);
 
-          if (pinnedPostsResponse != null) {
-            allUserPinnedPostIds =
-                pinnedPostsResponse
-                    .map<String>((data) => data['post_id'] as String)
-                    .toSet();
-          }
+          allUserPinnedPostIds =
+              pinnedPostsResponse
+                  .map<String>((data) => data['post_id'] as String)
+                  .toSet();
         }
       }
 
@@ -1205,7 +1205,9 @@ class SupabaseService {
           .eq('user_id', userId)
           .eq('product_name', productName)
           .eq('variation', variationValue);
-      _logger.info('Removed $productName ($variationValue) from cart for user $userId');
+      _logger.info(
+        'Removed $productName ($variationValue) from cart for user $userId',
+      );
       return true;
     } catch (e) {
       _logger.severe('Error removing item from cart: $e');

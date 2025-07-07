@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'supabase_service.dart'; // Import your existing API service
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 // import 'package:flutter_lucide/icons.dart'; // Removed incorrect import
 import 'user_profile_screen.dart';

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'supabase_service.dart';
@@ -103,9 +102,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
         print('DEBUG: User posts: ${posts.length}');
 
         // Separate regular posts and product posts
-        final List<Map<String, dynamic>> allPosts = List<Map<String, dynamic>>.from(posts);
-        final List<Map<String, dynamic>> productsOnly = allPosts.where((p) => p['is_product'] == true || p['is_product'] == 1 || p['is_product'] == 't' || p['is_product'] == 'true').toList();
-        final List<Map<String, dynamic>> regularOnly = allPosts.where((p) => !(p['is_product'] == true || p['is_product'] == 1 || p['is_product'] == 't' || p['is_product'] == 'true')).toList();
+        final List<Map<String, dynamic>> allPosts =
+            List<Map<String, dynamic>>.from(posts);
+        final List<Map<String, dynamic>> productsOnly =
+            allPosts
+                .where(
+                  (p) =>
+                      p['is_product'] == true ||
+                      p['is_product'] == 1 ||
+                      p['is_product'] == 't' ||
+                      p['is_product'] == 'true',
+                )
+                .toList();
+        final List<Map<String, dynamic>> regularOnly =
+            allPosts
+                .where(
+                  (p) =>
+                      !(p['is_product'] == true ||
+                          p['is_product'] == 1 ||
+                          p['is_product'] == 't' ||
+                          p['is_product'] == 'true'),
+                )
+                .toList();
 
         setState(() {
           profileData = fetchedProfileData; // This already contains the counts
@@ -505,16 +523,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ? const Center(
                                   child: Text(
                                     'No products yet',
-                                    style: TextStyle(color: Colors.grey, fontSize: 16),
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 16,
+                                    ),
                                   ),
                                 )
                                 : GridView.builder(
                                   padding: const EdgeInsets.all(10),
-                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 3,
-                                    crossAxisSpacing: 5,
-                                    mainAxisSpacing: 5,
-                                  ),
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        crossAxisSpacing: 5,
+                                        mainAxisSpacing: 5,
+                                      ),
                                   itemCount: userProducts.length,
                                   itemBuilder: (context, index) {
                                     final product = userProducts[index];
@@ -524,13 +546,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       },
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(8),
-                                        child: product['image_url'] != null
-                                            ? Image.network(
-                                              product['image_url'],
-                                              fit: BoxFit.cover,
-                                              errorBuilder: (_, __, ___) => Container(color: Colors.grey[200], child: const Icon(Icons.error)),
-                                            )
-                                            : Container(color: Colors.grey[200], child: const Icon(Icons.image_not_supported)),
+                                        child:
+                                            product['image_url'] != null
+                                                ? Image.network(
+                                                  product['image_url'],
+                                                  fit: BoxFit.cover,
+                                                  errorBuilder:
+                                                      (_, __, ___) => Container(
+                                                        color: Colors.grey[200],
+                                                        child: const Icon(
+                                                          Icons.error,
+                                                        ),
+                                                      ),
+                                                )
+                                                : Container(
+                                                  color: Colors.grey[200],
+                                                  child: const Icon(
+                                                    Icons.image_not_supported,
+                                                  ),
+                                                ),
                                       ),
                                     );
                                   },

@@ -59,12 +59,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
         address: address,
         category: userType == 'artist' ? artistCategory : 'regular',
       );
-      
+
       if (result['success'] == true) {
         _showDialog('Signup success: ${result['message']}');
         // Navigate to login screen after successful signup
         Future.delayed(Duration(seconds: 2), () {
-          Navigator.pushNamedAndRemoveUntil(context, "/login", (route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            "/login",
+            (route) => false,
+          );
         });
       } else {
         _showDialog('Signup failed: ${result['message']}');
@@ -76,19 +80,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
   }
 
-
   void _showDialog(String message) {
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text("OK"),
-          )
-        ],
-      ),
+      builder:
+          (_) => AlertDialog(
+            content: Text(message),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text("OK"),
+              ),
+            ],
+          ),
     );
   }
 
@@ -108,19 +112,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset('graphics/Logo C.png', width: 70),
-                      const SizedBox(width: 10),
-                      Image.asset('graphics/Typography.png', width: 250),
-                    ],
+                    children: [Image.asset('graphics/Logo C.png', width: 150)],
                   ),
                   const SizedBox(height: 40),
                   Container(
                     width: 357,
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(148, 255, 255, 255),
+                      color: const Color.fromARGB(
+                        148,
+                        255,
+                        255,
+                        255,
+                      ).withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(13),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(
+                            95,
+                            157,
+                            156,
+                            156,
+                          ).withValues(alpha: 0.2),
+                          offset: Offset(0, 4),
+                          blurRadius: 10,
+                        ),
+                      ],
                     ),
                     child: Column(
                       children: [
@@ -134,7 +151,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         const SizedBox(height: 15),
                         _buildInputField('Age', ageController),
                         const SizedBox(height: 15),
-                        _buildInputField('Password', passwordController, isPassword: true),
+                        _buildInputField(
+                          'Password',
+                          passwordController,
+                          isPassword: true,
+                        ),
                         const SizedBox(height: 15),
                         _buildInputField('Address', addressController),
                         const SizedBox(height: 15),
@@ -144,12 +165,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           children: [
                             const Text(
                               "Register as:",
-                              style: TextStyle(color: Colors.white, fontSize: 15),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                              ),
                             ),
                             ListTile(
-                              title: const Text("Regular User", style: TextStyle(color: Colors.white)),
+                              title: const Text(
+                                "Regular User",
+                                style: TextStyle(color: Colors.white),
+                              ),
                               leading: Radio<String>(
-                                fillColor: WidgetStateProperty.all(Colors.white),
+                                fillColor: WidgetStateProperty.all(
+                                  Colors.white,
+                                ),
                                 value: 'regular',
                                 groupValue: _userType,
                                 onChanged: (value) {
@@ -160,9 +189,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                             ),
                             ListTile(
-                              title: const Text("Artist", style: TextStyle(color: Colors.white)),
+                              title: const Text(
+                                "Artist",
+                                style: TextStyle(color: Colors.white),
+                              ),
                               leading: Radio<String>(
-                                fillColor: WidgetStateProperty.all(Colors.white),
+                                fillColor: WidgetStateProperty.all(
+                                  Colors.white,
+                                ),
                                 value: 'artist',
                                 groupValue: _userType,
                                 onChanged: (value) {
@@ -174,7 +208,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                             if (_userType == 'artist') ...[
                               const SizedBox(height: 10),
-                              _buildInputField('Artist Category (e.g. Illustrator, Musician)', artistCategoryController),
+                              _buildInputField(
+                                'Artist Category (e.g. Illustrator, Musician)',
+                                artistCategoryController,
+                              ),
                             ],
                           ],
                         ),
@@ -193,16 +230,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
-                      child: isLoading
-                          ? const CircularProgressIndicator(color: Colors.white)
-                          : const Text(
-                              'CREATE AN ACCOUNT',
-                              style: TextStyle(
-                                fontSize: 15,
+                      child:
+                          isLoading
+                              ? const CircularProgressIndicator(
                                 color: Colors.white,
-                                fontFamily: 'IstokWeb-Bold',
+                              )
+                              : const Text(
+                                'CREATE AN ACCOUNT',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                  fontFamily: 'SFPRODISPLAY',
+                                ),
                               ),
-                            ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -213,8 +253,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 11,
-                        color: Color(0xffd1cece),
-                        fontFamily: 'IstokWeb-Regular',
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontFamily: 'SFPRODISPLAY',
                       ),
                     ),
                   ),
@@ -226,7 +266,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
             top: 21,
             left: 20,
             child: IconButton(
-              icon: Image.asset('graphics/back_button.png', width: 29, height: 29),
+              icon: Image.asset(
+                'graphics/back_button.png',
+                width: 29,
+                height: 29,
+              ),
               onPressed: () => Navigator.pushNamed(context, "/login"),
             ),
           ),
@@ -235,8 +279,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _buildInputField(String hint, TextEditingController controller,
-      {bool isPassword = false}) {
+  Widget _buildInputField(
+    String hint,
+    TextEditingController controller, {
+    bool isPassword = false,
+  }) {
     return TextField(
       controller: controller,
       obscureText: isPassword,
@@ -250,7 +297,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 12,
+        ),
       ),
     );
   }

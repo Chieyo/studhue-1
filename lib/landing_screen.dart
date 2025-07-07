@@ -31,7 +31,7 @@ class LandingScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.white,
-                      fontFamily: 'IstokWeb-Bold',
+                      fontFamily: 'SFPRODISPLAY',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -47,8 +47,25 @@ class LandingScreen extends StatelessWidget {
                     horizontal: 15,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(162, 255, 255, 255),
+                    color: const Color.fromARGB(
+                      162,
+                      255,
+                      255,
+                      255,
+                    ).withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(18),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromARGB(
+                          95,
+                          157,
+                          156,
+                          156,
+                        ).withValues(alpha: 0.2),
+                        offset: Offset(0, 4),
+                        blurRadius: 10,
+                      ),
+                    ],
                   ),
                   child: Column(
                     children: [
@@ -69,7 +86,7 @@ class LandingScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,
-                              fontFamily: 'IstokWeb-Bold',
+                              fontFamily: 'SFPRODISPLAY',
                             ),
                           ),
                         ),
@@ -91,7 +108,7 @@ class LandingScreen extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,
-                                fontFamily: 'IstokWeb-Bold',
+                                fontFamily: 'SFPRODISPLAY',
                               ),
                             ),
                           ),
@@ -108,7 +125,8 @@ class LandingScreen extends StatelessWidget {
                         width: double.infinity,
                         height: 50,
                         child: ElevatedButton(
-                          onPressed: () => Navigator.pushNamed(context, "/signup"),
+                          onPressed:
+                              () => Navigator.pushNamed(context, "/signup"),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFFDA0590),
                             shape: RoundedRectangleBorder(
@@ -120,7 +138,7 @@ class LandingScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,
-                              fontFamily: 'IstokWeb-Bold',
+                              fontFamily: 'SFPRODISPLAY',
                             ),
                           ),
                         ),

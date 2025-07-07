@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'StudHue',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(fontFamily: 'SFPRODISPLAY', primarySwatch: Colors.blue),
       // Set initial screen
       initialRoute: '/welcome',
       routes: {

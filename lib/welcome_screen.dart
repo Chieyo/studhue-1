@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'signup_screen.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -14,11 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'StudHue',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(fontFamily: 'SFPRODISPLAY', primarySwatch: Colors.blue),
       home: const WelcomeScreen(),
-      routes: {
-        '/signup': (context) => const SignUpScreen(),
-      },
+      routes: {'/signup': (context) => const SignUpScreen()},
     );
   }
 }
@@ -38,10 +35,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         children: [
           // Background Image
           Positioned.fill(
-            child: Image.asset(
-              "graphics/Background.png",
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset("graphics/Background.png", fit: BoxFit.cover),
           ),
 
           Center(
@@ -50,10 +44,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 // Logo
-                Image.asset(
-                  'graphics/Logo B.png',
-                  width: 300,
-                ),
+                Image.asset('graphics/Logo B.png', width: 300),
 
                 const SizedBox(height: 20),
 
@@ -65,7 +56,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.white,
-                      fontFamily: 'IstokWeb',
+                      fontFamily: 'SFPRODISPLAY',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -94,7 +85,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       fontSize: 17,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'IstokWeb',
+                      fontFamily: 'SFPRODISPLAY',
                     ),
                   ),
                 ),

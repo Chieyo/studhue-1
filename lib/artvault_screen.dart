@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'supabase_service.dart'; // must define VaultItem and fetchVaultItems()
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 
 class ArtVault extends StatefulWidget {

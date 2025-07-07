@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
-import 'package:flutter/cupertino.dart';
 import 'supabase_service.dart';
 import 'pinboards_create_dialog.dart';
 import 'pinned_posts_screen.dart';
