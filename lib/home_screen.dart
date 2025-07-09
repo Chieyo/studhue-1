@@ -469,12 +469,7 @@ class HomeScreenState extends State<HomeScreen> {
                             if (post.username != _loggedInUsername) {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder:
-                                      (context) => UserProfileScreen(
-                                        username: post.username,
-                                      ),
-                                ),
+                                MaterialPageRoute(builder: (context) => UserProfileScreen(username: post.username)),
                               );
                             } else {
                               // If it's the current user, go to their own profile
